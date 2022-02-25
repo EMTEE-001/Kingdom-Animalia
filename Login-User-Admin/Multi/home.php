@@ -1,9 +1,8 @@
 <?php
-	session_start();
-	include "db_conn.php";
+session_start();
+include "db_conn.php";
 
-	if (isset($_SESSION['username']) && isset($_SESSION['id']))
-		{ ?>
+if (isset($_SESSION['username']) && isset($_SESSION['id'])) {?>
 
 <!DOCTYPE html>
 <html>
@@ -17,8 +16,8 @@
 		<?php if ($_SESSION['role'] == 'admin') {?>
 			<!-- for admin -->
 			<div class="card" style="width: 18rem;">
-			  <img src="img/admin-default.png" 
-			  	   class="card-img-top" 
+			  <img src="img/admin-default.png"
+			  	   class="card-img-top"
 			  	   alt="admin image">
 			  <div class="card-body text-center">
 			    <h5 class="card-title">
@@ -28,9 +27,9 @@
 			  </div>
 			</div>
 			<div class="p-3">
-				<?php include 'php/members.php'; 
-				if (mysqli_num_rows($res) > 0) {?>
-				
+				<?php include 'php/members.php';
+    if (mysqli_num_rows($res) > 0) {?>
+
 				<h1 class="display-4 fs-1">Members</h1>
 				<table class="table"
 					   style="width: 32rem;">
@@ -43,25 +42,25 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  	<?php 
-				  	$i = 1; 
-				  	while ($rows = mysqli_fetch_assoc($res)) {?>
+				  	<?php
+$i = 1;
+        while ($rows = mysqli_fetch_assoc($res)) {?>
 				    <tr>
 				      <th scope="row"><?=$i?></th>
 				      <td><?=$rows['name']?></td>
 				      <td><?=$rows['username']?></td>
 				      <td><?=$rows['role']?></td>
 				    </tr>
-				    <?php $i++; }?>
+				    <?php $i++;}?>
   				</tbody>
 				</table>
 				<?php }?>
 			</div>
-		<?php }else { ?>
+		<?php } else {?>
 			<!-- FOR USER -->
 			<div class="card" style="width: 18rem;">
-			  <img src="img/user-default.png" 
-			  	   class="card-img-top" 
+			  <img src="img/user-default.png"
+			  	   class="card-img-top"
 			  	   alt="admin image">
 			  <div class="card-body text-center">
 			    <h5 class="card-title">
@@ -70,10 +69,10 @@
 			    <a href="logout.php" class="btn btn-dark">Logout</a>
 			  </div>
 			</div>
-		<?php } ?>
+		<?php }?>
 	</div>
 </body>
 </html>
-<?php }else{
-	header("Location: ../index.php");
-} ?>
+<?php } else {
+    header("Location: ../index.php");
+}?>
