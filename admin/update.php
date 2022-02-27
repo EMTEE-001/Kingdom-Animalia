@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
         /* echo "DATA INSERTED SUCCESSFULLY"; */
-        header('location:display.php');
+        header('location:updatePet.php');
     } else {
         die(mysqli_error($conn));
     }
@@ -44,13 +44,13 @@ if (isset($_POST['submit'])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Create New Account</title>
+    <title>Update Account</title>
 </head>
 
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <form class="border shadow p-3 rounded" method="post" style="width: 450px;">
-            <h1 class="text-center p-3">Update Account</h1>
+            <h1 class="text-center p-3">Update Pet Owner Account</h1>
             <!-- NAME -->
             <div class="mb-3">
                 <label>Name</label>
@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
                 <label>Password</label>
                 <input type="text" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" value=<?php echo $password; ?>>
             </div>
-            <button type="submit" class="btn btn-primary" name="submit">Update</button>
+            <button type="submit" class="btn btn-primary" name="submit">Next: Animal Biodata</button>
         </form>
     </div>
 
