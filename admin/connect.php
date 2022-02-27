@@ -11,5 +11,3 @@ $conn = new mysqli($sname, $uname, $password, $db_name);
 if (!$conn) {
     die(mysqli_error($conn));
 }
-
-?>

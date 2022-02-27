@@ -3,21 +3,19 @@ include 'connect.php';
 /* the form's method is POST,
     when submit button is clicked, it will gather all inputs from the form */
 if (isset($_POST['submit'])) {
+    /* OWNER INFO */
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
 
-    // $result = mysqli_query($conn, $sql);
-
-    /*<!-- pname,species,breed, bday, sex-->*/
+    /*<!-- PET INFO: pname,species,breed, bday, sex-->*/
     $pname = $_POST['pname'];
     $species = $_POST['species'];
     $breed = $_POST['breed'];
     $bday = $_POST['bday'];
     $sex = $_POST['sex'];
 
-    
     $sql = "insert into `crud` (name,email,mobile,password) 
     values('$name','$email','$mobile','$password')";
 
@@ -27,7 +25,6 @@ if (isset($_POST['submit'])) {
     $result2 = mysqli_query($conn, $sql2);
 
     if ($result && $result2) {
-        /* echo "DATA INSERTED SUCCESSFULLY"; */
         header('location:display.php');
     } else {
         die(mysqli_error($conn));

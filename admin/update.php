@@ -13,10 +13,8 @@ $email = $row['email'];
 $mobile = $row['mobile'];
 $password = $row['password'];
 
-
 $sql2 = "select * from `pet_information` where pID=$id";
 $result2 = mysqli_query($conn, $sql2);
-
 $row2 = mysqli_fetch_assoc($result2);
 
 $pname = $row2['pName'];
@@ -24,7 +22,6 @@ $species = $row2['species'];
 $breed = $row2['breed'];
 $bday = $row2['bday'];
 $sex = $row2['sex'];
-
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
@@ -34,9 +31,6 @@ if (isset($_POST['submit'])) {
 
     $sql = "update `crud` set id=$id,name='$name',email='$email',mobile='$mobile',password='$password'
     where id=$id";
-    /* condition */
-
-    // $result = mysqli_query($conn, $sql);
 
     $pname = $_POST['pname'];
     $species = $_POST['species'];
@@ -97,7 +91,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" value=<?php echo $password; ?>>
             </div>
 
-            
+
             <h1 class="text-center p-3">Update Pet Information</h1>
             <!-- PET NAME -->
             <div class="mb-3">
