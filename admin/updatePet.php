@@ -3,13 +3,15 @@ include 'connPet.php';
 if (isset($_POST['submit'])) {
 
     /*<!-- pname,species,breed, bday, sex-->*/
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $password = $_POST['password'];
+    $pname = $_POST['pname'];
+    $species = $_POST['species'];
+    $breed = $_POST['breed'];
+    $bday = $_POST['bday'];
+    $sex = $_POST['sex'];
 
-    $sql = "insert into `crud` (name,email,mobile,password) 
-    values('$name','$email','$mobile','$password')";
+    $sql = "insert into `crud` (pname,species,breed, bday, sex) 
+    values('$pname','$species','$breed','$bday','$sex')";
+
     $result = mysqli_query($conn, $sql);
     if ($result) {
         /* echo "DATA INSERTED SUCCESSFULLY"; */
@@ -17,6 +19,7 @@ if (isset($_POST['submit'])) {
     } else {
         die(mysqli_error($conn));
     }
+}
 ?>
 
 <!doctype html>

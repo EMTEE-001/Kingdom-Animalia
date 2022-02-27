@@ -71,7 +71,8 @@ if (isset($_POST['submit'])) {
                 <label>Password</label>
                 <input type="text" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" value=<?php echo $password; ?>>
             </div>
-            <button type="submit" class="btn btn-primary" name="submit">Next: Animal Biodata</button>
+            <button class="btn btn-primary"><a href="update.php?" class="text-light">Next: Animal Biodata</a></button>
+            <!-- <button type="submit" class="btn btn-primary" name="submit">Next: Animal Biodata</button> -->
         </form>
     </div>
 
