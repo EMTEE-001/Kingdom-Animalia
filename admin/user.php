@@ -29,16 +29,16 @@ if (isset($_POST['submit'])) {
     $sql3 = "insert into `evaluation` (findings,treatments) 
     values('$findings','$treatments')";
 
-    $conn2 = new mysqli("localhost", "root", "", "login");
-    $sql4 = "insert into `users` (role,username,password,name,mobile) 
-    values('user','$email','$password','$name','$mobile')";
+    // $conn2 = new mysqli("localhost", "root", "", "login");
+    // $sql4 = "insert into `users` (role,username,password,name,mobile) 
+    // values('user','$email','$password','$name','$mobile')";
 
     $result = mysqli_query($conn, $sql);
     $result2 = mysqli_query($conn, $sql2);
     $result3 = mysqli_query($conn, $sql3);
-    $result4 = mysqli_query($conn2, $sql4);
+    // $result4 = mysqli_query($conn2, $sql4);
 
-    if ($result && $result2 && $result3 && $result4) {
+    if ($result && $result2 && $result3) {
         header('location:display.php');
     } else {
         die(mysqli_error($conn));
