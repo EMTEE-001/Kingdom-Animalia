@@ -23,6 +23,13 @@ $breed = $row2['breed'];
 $bday = $row2['bday'];
 $sex = $row2['sex'];
 
+$sql3 = "select * from `evaluation` where custID=$id";
+$result3 = mysqli_query($conn, $sql3);
+$row3 = mysqli_fetch_assoc($result3);
+
+$findings = $row3['findings'];
+$treatments = $row3['treatments'];
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -41,11 +48,17 @@ if (isset($_POST['submit'])) {
     $sql2 = "update `pet_information` set pID='$id',pname='$pname',species='$species',breed='$breed',bday='$bday',sex='$sex'
     where pID=$id";
 
+    $findings = $_POST['findings'];
+    $treatments = $_POST['treatments'];
+
+    $sql3 = "update `evaluation` set custID='$id',findings='$findings',treatments='$treatments'
+    where custID=$id";
+
     $result = mysqli_query($conn, $sql);
     $result2 = mysqli_query($conn, $sql2);
+    $result3 = mysqli_query($conn, $sql3);
 
-    if ($result && $result2) {
-        /* echo "DATA INSERTED SUCCESSFULLY"; */
+    if ($result && $result2 && $result3) {
         header('location:display.php');
     } else {
         die(mysqli_error($conn));
@@ -118,6 +131,21 @@ if (isset($_POST['submit'])) {
                 <label>Sex</label>
                 <input type="text" class="form-control" placeholder="Enter gender" name="sex" autocomplete="off" value=<?php echo $sex; ?>>
             </div>
+
+            <h1 class="text-center p-3">Diagnosis</h1>
+            <!-- FINDINGS -->
+            <div class="mb-3">
+                <label>Findings</label>
+                <input type="text" class="form-control" placeholder="Enter findings" name="findings" autocomplete="off" value=<?php echo $findings; ?>>
+            </div>
+            <!-- TREATMENTS -->
+            <div class="mb-3">
+                <label>Treatments</label>
+                <textarea name="treatments" rows="10" cols="129" placeholder="Enter medication/treatment" autocomplete="off"><?php echo strtr($treatments, array('\\r\\n' => '<br>', '\\r' => '<br>', '\\n' => '<br>'));?></textarea>
+
+                <!-- <input type="text" style="height: 200px" class="form-control" placeholder="Enter medication/treatment" name="treatments" autocomplete="off"> -->
+            </div>
+
             <!-- <button class="btn btn-primary"><a href="update.php?" class="text-light">Next: Animal Biodata</a></button> -->
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>

@@ -16,15 +16,29 @@ if (isset($_POST['submit'])) {
     $bday = $_POST['bday'];
     $sex = $_POST['sex'];
 
+    /* EVALUATION */
+    $findings = $_POST['findings'];
+    $treatments = $_POST['treatments'];
+
     $sql = "insert into `crud` (name,email,mobile,password) 
     values('$name','$email','$mobile','$password')";
 
     $sql2 = "insert into `pet_information` (pname,species,breed,bday,sex) 
     values('$pname','$species','$breed','$bday','$sex')";
+
+    $sql3 = "insert into `evaluation` (findings,treatments) 
+    values('$findings','$treatments')";
+
+    $conn2 = new mysqli("localhost", "root", "", "login");
+    $sql4 = "insert into `users` (role,username,password,name,mobile) 
+    values('user','$email','$password','$name','$mobile')";
+
     $result = mysqli_query($conn, $sql);
     $result2 = mysqli_query($conn, $sql2);
+    $result3 = mysqli_query($conn, $sql3);
+    $result4 = mysqli_query($conn2, $sql4);
 
-    if ($result && $result2) {
+    if ($result && $result2 && $result3 && $result4) {
         header('location:display.php');
     } else {
         die(mysqli_error($conn));
@@ -97,6 +111,20 @@ if (isset($_POST['submit'])) {
                 <label>Sex</label>
                 <input type="text" class="form-control" placeholder="Enter gender" name="sex" autocomplete="off">
             </div>
+
+            <h1 class="text-center p-3">Diagnosis</h1>
+            <!-- FINDINGS -->
+            <div class="mb-3">
+                <label>Findings</label>
+                <input type="text" class="form-control" placeholder="Enter findings" name="findings" autocomplete="off">
+            </div>
+            <!-- TREATMENTS -->
+            <div class="mb-3">
+                <label>Treatments</label>
+                <textarea name="treatments" rows="10" cols="129" placeholder="Enter medication/treatment" autocomplete="off"></textarea>
+                <!-- <input type="text" style="height: 200px" class="form-control" placeholder="Enter medication/treatment" name="treatments" autocomplete="off"> -->
+            </div>
+
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
     </div>
