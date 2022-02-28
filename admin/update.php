@@ -11,6 +11,7 @@ $row = mysqli_fetch_assoc($result);
 $name = $row['name'];
 $email = $row['email'];
 $mobile = $row['mobile'];
+$username = $row['username'];
 $password = $row['password'];
 
 $sql2 = "select * from `pet_information` where pID=$id";
@@ -34,6 +35,7 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
+    $username = $row['username'];
     $password = $_POST['password'];
 
     $sql = "update `crud` set id=$id,name='$name',email='$email',mobile='$mobile',password='$password'
@@ -97,6 +99,11 @@ if (isset($_POST['submit'])) {
             <div class="mb-3">
                 <label>Mobile Number</label>
                 <input type="text" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off" value=<?php echo $mobile; ?>>
+            </div>
+            <!--USERNAME -->
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Enter your username" name="username" autocomplete="off" value=<?php echo $username; ?>>
             </div>
             <!--PASSWORD -->
             <div class="mb-3">

@@ -23,6 +23,7 @@ include 'connect.php'; ?>
                     <th scope="col">Name</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Mobile</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Password</th>
                     <th scope="col">Operations</th>
                 </tr>
@@ -38,12 +39,14 @@ include 'connect.php'; ?>
                         $name = $row['name'];
                         $email = $row['email'];
                         $mobile = $row['mobile'];
+                        $username = $row['username'];
                         $password = $row['password'];
                         echo '<tr>
                             <th scope="row">' . $id . '</th>
                             <td>' . $name . '</td>
                             <td>' . $email . '</td>
                             <td>' . $mobile . '</td>
+                            <td>' . $username . '</td>
                             <td>' . $password . '</td>
 
                             <td>

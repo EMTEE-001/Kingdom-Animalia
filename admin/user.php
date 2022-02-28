@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
     /*<!-- PET INFO: pname,species,breed, bday, sex-->*/
@@ -20,8 +21,8 @@ if (isset($_POST['submit'])) {
     $findings = $_POST['findings'];
     $treatments = $_POST['treatments'];
 
-    $sql = "insert into `crud` (name,email,mobile,password) 
-    values('$name','$email','$mobile','$password')";
+    $sql = "insert into `crud` (name,email,mobile,username,password) 
+    values('$name','$email','$mobile','$username','$password')";
 
     $sql2 = "insert into `pet_information` (pname,species,breed,bday,sex) 
     values('$pname','$species','$breed','$bday','$sex')";
@@ -78,6 +79,11 @@ if (isset($_POST['submit'])) {
             <div class="mb-3">
                 <label>Mobile Number</label>
                 <input type="text" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off">
+            </div>
+            <!--USERNAME -->
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Enter your username" name="username" autocomplete="off">
             </div>
             <!--PASSWORD -->
             <div class="mb-3">
